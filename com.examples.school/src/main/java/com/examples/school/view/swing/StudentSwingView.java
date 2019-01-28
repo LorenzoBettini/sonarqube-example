@@ -2,12 +2,16 @@ package com.examples.school.view.swing;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.util.List;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-public class StudentSwingView extends JFrame {
+import com.examples.school.model.Student;
+import com.examples.school.view.StudentView;
+
+public class StudentSwingView extends JFrame implements StudentView {
 
 	private static final long serialVersionUID = 1L;
 
@@ -40,6 +44,30 @@ public class StudentSwingView extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+	}
+
+	@Override
+	public void showAllStudents(List<Student> students) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void showError(String message, Student student) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void studentAdded(Student student) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void studentRemoved(Student student) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
