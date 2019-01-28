@@ -13,7 +13,7 @@
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
     <junit.version>4.12</junit.version>
-    <assertj.version>3.11.1</assertj.version>
+    <assertj.swing.version>3.9.2</assertj.swing.version>
     <mockito.version>2.23.0</mockito.version>
     <mongo.driver.version>3.9.1</mongo.driver.version>
     <mongo.java.server.version>1.11.1</mongo.java.server.version>
@@ -40,8 +40,8 @@
     </dependency>
     <dependency>
       <groupId>org.assertj</groupId>
-      <artifactId>assertj-core</artifactId>
-      <version>${assertj.version}</version>
+      <artifactId>assertj-swing-junit</artifactId>
+      <version>${assertj.swing.version}</version>
       <scope>test</scope>
     </dependency>
     <dependency>
