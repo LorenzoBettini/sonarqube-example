@@ -172,8 +172,7 @@ public class StudentSwingView extends JFrame implements StudentView {
 
 	@Override
 	public void showAllStudents(List<Student> students) {
-		// TODO Auto-generated method stub
-		
+		students.stream().forEach(listStudentsModel::addElement);
 	}
 
 	@Override
