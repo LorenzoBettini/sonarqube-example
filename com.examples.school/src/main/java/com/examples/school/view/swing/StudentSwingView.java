@@ -133,6 +133,8 @@ public class StudentSwingView extends JFrame implements StudentView {
 		
 		btnAdd = new JButton("Add");
 		btnAdd.setEnabled(false);
+		btnAdd.addActionListener(
+				e -> schoolController.newStudent(new Student(txtId.getText(), txtName.getText())));
 		GridBagConstraints gbc_btnAdd = new GridBagConstraints();
 		gbc_btnAdd.insets = new Insets(0, 0, 5, 0);
 		gbc_btnAdd.gridwidth = 2;
@@ -159,6 +161,8 @@ public class StudentSwingView extends JFrame implements StudentView {
 		
 		btnDeleteSelected = new JButton("Delete Selected");
 		btnDeleteSelected.setEnabled(false);
+		btnDeleteSelected.addActionListener(
+				e -> schoolController.deleteStudent(listStudents.getSelectedValue()));
 		GridBagConstraints gbc_btnDeleteSelected = new GridBagConstraints();
 		gbc_btnDeleteSelected.insets = new Insets(0, 0, 5, 0);
 		gbc_btnDeleteSelected.gridwidth = 2;
