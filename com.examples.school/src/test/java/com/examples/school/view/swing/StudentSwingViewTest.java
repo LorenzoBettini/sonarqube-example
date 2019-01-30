@@ -69,7 +69,7 @@ public class StudentSwingViewTest extends AssertJSwingJUnitTestCase {
 
 	@Test
 	public void testDeleteButtonShouldBeEnabledOnlyWhenAStudentIsSelected() {
-		studentSwingView.getListStudentsModel().addElement(new Student("1", "test"));
+		GuiActionRunner.execute(() -> studentSwingView.getListStudentsModel().addElement(new Student("1", "test")));
 		window.list("studentList").selectItem(0);
 		JButtonFixture deleteButton = window.button(JButtonMatcher.withText("Delete Selected"));
 		deleteButton.requireEnabled();
