@@ -1,6 +1,7 @@
 package com.examples.school.view.swing;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.verify;
 
 import java.util.Arrays;
 
@@ -150,4 +151,27 @@ public class StudentSwingViewTest extends AssertJSwingJUnitTestCase {
 		window.label("errorMessageLabel").requireText(" ");
 	}
 
+	@Test
+	public void testAddButtonShouldDelegateToSchoolControllerNewStudent() {
+		window.textBox("idTextBox").enterText("1");
+		window.textBox("nameTextBox").enterText("test");
+		window.button(JButtonMatcher.withText("Add")).click();
+		verify(schoolController).newStudent(new Student("1", "test"));
+	}
+
+	@Test
+	public void testDeleteButtonShouldDelegateToSchoolControllerDeleteStudent() {
+		Student student1 = new Student("1", "test1");
+		Student student2 = new Student("2", "test2");
+		GuiActionRunner.execute(
+			() -> {
+				DefaultListModel<Student> listStudentsModel = studentSwingView.getListStudentsModel();
+				listStudentsModel.addElement(student1);
+				listStudentsModel.addElement(student2);
+			}
+		);
+		window.list("studentList").selectItem(1);
+		window.button(JButtonMatcher.withText("Delete Selected")).click();
+		verify(schoolController).deleteStudent(student2);
+	}
 }
