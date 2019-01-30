@@ -144,6 +144,8 @@ public class StudentSwingView extends JFrame implements StudentView {
 		
 		listStudentsModel = new DefaultListModel<>();
 		listStudents = new JList<>(listStudentsModel);
+		listStudents.addListSelectionListener(
+				e -> btnDeleteSelected.setEnabled(listStudents.getSelectedIndex() != -1));
 		listStudents.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listStudents.setName("studentList");
 		scrollPane.setViewportView(listStudents);
