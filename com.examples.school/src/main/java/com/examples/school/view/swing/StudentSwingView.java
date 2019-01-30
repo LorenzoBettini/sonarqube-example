@@ -82,8 +82,8 @@ public class StudentSwingView extends JFrame implements StudentView {
 			@Override
 			public void keyReleased(KeyEvent e) {
 				btnAdd.setEnabled(
-					!txtId.getText().isEmpty() &&
-					!txtName.getText().isEmpty()
+					!txtId.getText().trim().isEmpty() &&
+					!txtName.getText().trim().isEmpty()
 				);
 			}
 		};
