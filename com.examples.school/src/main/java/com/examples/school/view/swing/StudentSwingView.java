@@ -14,6 +14,8 @@ import com.examples.school.model.Student;
 import com.examples.school.view.StudentView;
 import javax.swing.JTextField;
 import java.awt.Insets;
+
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JList;
 import javax.swing.JScrollPane;
@@ -30,10 +32,12 @@ public class StudentSwingView extends JFrame implements StudentView {
 	private JTextField txtId;
 	private JTextField txtName;
 	private JButton btnAdd;
-	private JList listStudents;
+	private JList<Student> listStudents;
 	private JScrollPane scrollPane;
 	private JButton btnDeleteSelected;
 	private JLabel lblErrorMessage;
+
+	private DefaultListModel<Student> listStudentsModel;
 
 	/**
 	 * Launch the application.
@@ -50,6 +54,10 @@ public class StudentSwingView extends JFrame implements StudentView {
 				}
 			}
 		});
+	}
+
+	DefaultListModel<Student> getListStudentsModel() {
+		return listStudentsModel;
 	}
 
 	/**
@@ -134,7 +142,8 @@ public class StudentSwingView extends JFrame implements StudentView {
 		gbc_scrollPane.gridy = 3;
 		contentPane.add(scrollPane, gbc_scrollPane);
 		
-		listStudents = new JList();
+		listStudentsModel = new DefaultListModel<>();
+		listStudents = new JList<>(listStudentsModel);
 		listStudents.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		listStudents.setName("studentList");
 		scrollPane.setViewportView(listStudents);
