@@ -93,4 +93,14 @@ public class StudentSwingViewTest extends AssertJSwingJUnitTestCase {
 		assertThat(listContents)
 			.containsExactly(student1.toString(), student2.toString());
 	}
+
+	@Test
+	public void testShowErrorShouldShowTheMessageInTheErrorLabel() {
+		Student student = new Student("1", "test1");
+		GuiActionRunner.execute(
+			() -> studentSwingView.showError("error message", student)
+		);
+		window.label("errorMessageLabel")
+			.requireText("error message: " + student);
+	}
 }
