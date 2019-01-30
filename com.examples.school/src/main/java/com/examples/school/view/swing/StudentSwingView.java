@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import com.examples.school.controller.SchoolController;
 import com.examples.school.model.Student;
 import com.examples.school.view.StudentView;
 import javax.swing.JTextField;
@@ -39,6 +40,8 @@ public class StudentSwingView extends JFrame implements StudentView {
 
 	private DefaultListModel<Student> listStudentsModel;
 
+	private SchoolController schoolController;
+
 	/**
 	 * Launch the application.
 	 */
@@ -58,6 +61,10 @@ public class StudentSwingView extends JFrame implements StudentView {
 
 	DefaultListModel<Student> getListStudentsModel() {
 		return listStudentsModel;
+	}
+
+	public void setSchoolController(SchoolController schoolController) {
+		this.schoolController = schoolController;
 	}
 
 	/**

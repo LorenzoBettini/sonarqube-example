@@ -17,6 +17,10 @@ import org.assertj.swing.junit.runner.GUITestRunner;
 import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mock;
+import org.mockito.MockitoAnnotations;
+
+import com.examples.school.controller.SchoolController;
 
 import com.examples.school.model.Student;
 
@@ -27,10 +31,15 @@ public class StudentSwingViewTest extends AssertJSwingJUnitTestCase {
 
 	private StudentSwingView studentSwingView;
 
+	@Mock
+	private SchoolController schoolController;
+
 	@Override
 	protected void onSetUp() {
+		MockitoAnnotations.initMocks(this);
 		GuiActionRunner.execute(() -> {
 			studentSwingView = new StudentSwingView();
+			studentSwingView.setSchoolController(schoolController);
 			return studentSwingView;
 		});
 		window = new FrameFixture(robot(), studentSwingView);
