@@ -5,11 +5,14 @@ import org.assertj.swing.core.matcher.JButtonMatcher;
 import org.assertj.swing.core.matcher.JLabelMatcher;
 import org.assertj.swing.edt.GuiActionRunner;
 import org.assertj.swing.fixture.FrameFixture;
+import org.assertj.swing.fixture.JButtonFixture;
 import org.assertj.swing.fixture.JTextComponentFixture;
 import org.assertj.swing.junit.runner.GUITestRunner;
 import org.assertj.swing.junit.testcase.AssertJSwingJUnitTestCase;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import com.examples.school.model.Student;
 
 @RunWith(GUITestRunner.class)
 public class StudentSwingViewTest extends AssertJSwingJUnitTestCase {
@@ -62,5 +65,15 @@ public class StudentSwingViewTest extends AssertJSwingJUnitTestCase {
 		idTextBox.enterText(" ");
 		nameTextBox.enterText("test");
 		window.button(JButtonMatcher.withText("Add")).requireDisabled();
+	}
+
+	@Test
+	public void testDeleteButtonShouldBeEnabledOnlyWhenAStudentIsSelected() {
+		studentSwingView.getListStudentsModel().addElement(new Student("1", "test"));
+		window.list("studentList").selectItem(0);
+		JButtonFixture deleteButton = window.button(JButtonMatcher.withText("Delete Selected"));
+		deleteButton.requireEnabled();
+		window.list("studentList").clearSelection();
+		deleteButton.requireDisabled();
 	}
 }
