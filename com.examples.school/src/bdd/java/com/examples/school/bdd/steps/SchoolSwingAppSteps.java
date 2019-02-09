@@ -1,6 +1,9 @@
 package com.examples.school.bdd.steps;
 
 import static org.assertj.swing.launcher.ApplicationLauncher.application;
+
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.*;
 
 import javax.swing.JFrame;
@@ -44,15 +47,18 @@ public class SchoolSwingAppSteps {
 			window.cleanUp();
 	}
 
-	@Given("The database contains a student with id {string} and name {string}")
-	public void the_database_contains_a_student_with_id_and_name(String id, String name) {
-		mongoClient
-			.getDatabase(DB_NAME)
-			.getCollection(COLLECTION_NAME)
-			.insertOne(
-				new Document()
-					.append("id", id)
-					.append("name", name));
+	@Given("The database contains the students with the following values")
+	public void the_database_contains_the_students_with_the_following_values(
+			List<List<String>> values) {
+		values.forEach(
+			v -> mongoClient
+				.getDatabase(DB_NAME)
+				.getCollection(COLLECTION_NAME)
+				.insertOne(
+					new Document()
+						.append("id", v.get(0))
+						.append("name", v.get(1)))
+		);
 	}
 
 	@When("The Student View is shown")
