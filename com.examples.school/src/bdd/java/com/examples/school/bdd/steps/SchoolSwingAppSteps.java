@@ -1,6 +1,7 @@
 package com.examples.school.bdd.steps;
 
 import static org.assertj.swing.launcher.ApplicationLauncher.application;
+import static org.assertj.core.api.Assertions.*;
 
 import javax.swing.JFrame;
 
@@ -74,8 +75,8 @@ public class SchoolSwingAppSteps {
 
 	@Then("The list contains an element with id {string} and name {string}")
 	public void the_list_contains_an_element_with_id_and_name(String id, String name) {
-		// Write code here that turns the phrase above into concrete actions
-		throw new cucumber.api.PendingException();
+		assertThat(window.list().contents())
+			.anySatisfy(e -> assertThat(e).contains(id, name));
 	}
 
 }
