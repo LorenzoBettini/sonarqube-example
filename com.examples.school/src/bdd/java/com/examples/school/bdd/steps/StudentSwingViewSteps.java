@@ -17,6 +17,7 @@ import org.assertj.swing.finder.WindowFinder;
 import org.assertj.swing.fixture.FrameFixture;
 
 import cucumber.api.java.After;
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -77,5 +78,17 @@ public class StudentSwingViewSteps {
 	public void an_error_is_shown_containing_the_following_values(List<String> values) {
 		assertThat(window.label("errorMessageLabel").text())
 			.contains(values);
+	}
+
+	@Given("The user provides student data in the text fields")
+	public void the_user_provides_student_data_in_the_text_fields() {
+		window.textBox("idTextBox").enterText("10");
+		window.textBox("nameTextBox").enterText("new student");
+	}
+
+	@Then("The list contains the new student")
+	public void the_list_contains_the_new_student() {
+		assertThat(window.list().contents())
+			.anySatisfy(e -> assertThat(e).contains("10", "new student"));
 	}
 }
