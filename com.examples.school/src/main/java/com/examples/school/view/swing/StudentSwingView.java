@@ -41,7 +41,7 @@ public class StudentSwingView extends JFrame implements StudentView {
 
 	private DefaultListModel<Student> listStudentsModel;
 
-	private SchoolController schoolController;
+	private transient SchoolController schoolController;
 
 	DefaultListModel<Student> getListStudentsModel() {
 		return listStudentsModel;
