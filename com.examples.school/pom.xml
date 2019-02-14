@@ -31,6 +31,14 @@
       <version>${mongo.driver.version}</version>
     </dependency>
     <dependency>
+      <!-- Needed to avoid a false positive from SonarQube:
+        https://jira.sonarsource.com/browse/SONARJAVA-2785 -->
+      <groupId>com.google.code.findbugs</groupId>
+      <artifactId>jsr305</artifactId>
+      <version>3.0.2</version>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
       <!-- required to see Mongo Java Driver logs -->
       <groupId>ch.qos.logback</groupId>
       <artifactId>logback-classic</artifactId>
