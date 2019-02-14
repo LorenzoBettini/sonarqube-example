@@ -49,6 +49,11 @@
     <sonar.issue.ignore.multicriteria.e13.resourceKey>
       **/StudentSwingViewTest.java
     </sonar.issue.ignore.multicriteria.e13.resourceKey>
+
+    <sonar.coverage.exclusions>
+      **/model/*.*,
+      **/SchoolSwingApp.*
+    </sonar.coverage.exclusions>
   </properties>
 
   <dependencies>
