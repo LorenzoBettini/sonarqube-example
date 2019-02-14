@@ -55,6 +55,11 @@
       ${project.build.directory}/surefire-reports,
       ${project.build.directory}/failsafe-reports
     </sonar.junit.reportPaths>
+
+    <sonar.coverage.exclusions>
+      **/model/*.*,
+      **/SchoolSwingApp.*
+    </sonar.coverage.exclusions>
   </properties>
 
   <dependencies>
