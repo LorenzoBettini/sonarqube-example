@@ -26,4 +26,4 @@ before_script:
 
 script:
    - git fetch --unshallow
-   - mvn -f com.examples.school/pom.xml clean verify sonar:sonar
+   - mvn -f com.examples.school/pom.xml clean verify -Pjacoco sonar:sonar
