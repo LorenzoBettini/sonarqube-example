@@ -21,6 +21,18 @@
     <mongo.java.server.version>1.39.0</mongo.java.server.version>
     <testcontainers.version>1.19.3</testcontainers.version>
     <picocli.version>4.6.1</picocli.version>
+
+    <!-- For each rule to ignore, add another eXX and two corresponding 
+      properties with eXX in the name as below -->
+    <sonar.issue.ignore.multicriteria>e11</sonar.issue.ignore.multicriteria>
+    <!-- Disable rule for "Local variable and method parameter names should 
+      comply with a naming convention" (just an example) -->
+    <sonar.issue.ignore.multicriteria.e11.ruleKey>
+      java:S117
+    </sonar.issue.ignore.multicriteria.e11.ruleKey>
+    <sonar.issue.ignore.multicriteria.e11.resourceKey>
+      **/StudentSwingView.java
+    </sonar.issue.ignore.multicriteria.e11.resourceKey>
   </properties>
 
   <dependencies>
