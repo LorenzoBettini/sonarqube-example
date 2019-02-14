@@ -24,6 +24,18 @@
 
     <!-- In sonar-maven-plugin 5.0.0.4389, the default URL is not localhost anymore -->
     <sonar.host.url>http://localhost:9000</sonar.host.url>
+
+    <!-- For each rule to ignore, add another eXX and two corresponding 
+      properties with eXX in the name as below -->
+    <sonar.issue.ignore.multicriteria>e11</sonar.issue.ignore.multicriteria>
+    <!-- Disable rule for "Local variable and method parameter names should 
+      comply with a naming convention" (just an example) -->
+    <sonar.issue.ignore.multicriteria.e11.ruleKey>
+      java:S117
+    </sonar.issue.ignore.multicriteria.e11.ruleKey>
+    <sonar.issue.ignore.multicriteria.e11.resourceKey>
+      **/StudentSwingView.java
+    </sonar.issue.ignore.multicriteria.e11.resourceKey>
   </properties>
 
   <dependencies>
