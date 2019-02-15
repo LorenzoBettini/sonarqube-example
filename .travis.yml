@@ -7,15 +7,22 @@ env: DISPLAY=:99.0
 services:
    - docker
 
+addons:
+  sonarcloud:
+    organization: "lorenzobettini-github"
+    token:
+      secure: $SONAR_TOKEN
+
 # skip installation step
 install: true
 
 cache:
    directories:
       - $HOME/.m2
+      - $HOME/.sonar/cache
 
 before_script:
    - sh -e /etc/init.d/xvfb start
 
 script:
-   - mvn -f com.examples.school/pom.xml clean verify
+   - mvn -f com.examples.school/pom.xml clean verify sonar:sonar
