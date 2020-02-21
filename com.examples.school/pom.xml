@@ -24,7 +24,7 @@
 
     <!-- For each rule to ignore, add another eXX and two corresponding 
       properties with eXX in the name as below -->
-    <sonar.issue.ignore.multicriteria>e11</sonar.issue.ignore.multicriteria>
+    <sonar.issue.ignore.multicriteria>e11,e12</sonar.issue.ignore.multicriteria>
     <!-- Disable rule for "Local variable and method parameter names should 
       comply with a naming convention" (just an example) -->
     <sonar.issue.ignore.multicriteria.e11.ruleKey>
@@ -33,6 +33,14 @@
     <sonar.issue.ignore.multicriteria.e11.resourceKey>
       **/StudentSwingView.java
     </sonar.issue.ignore.multicriteria.e11.resourceKey>
+    <!-- Disable rule for "Tests should include assertions":
+      SonarQube is not aware of AssertJ Swing -->
+    <sonar.issue.ignore.multicriteria.e12.ruleKey>
+      java:S2699
+    </sonar.issue.ignore.multicriteria.e12.ruleKey>
+    <sonar.issue.ignore.multicriteria.e12.resourceKey>
+      **/StudentSwingViewTest.java
+    </sonar.issue.ignore.multicriteria.e12.resourceKey>
   </properties>
 
   <dependencies>
