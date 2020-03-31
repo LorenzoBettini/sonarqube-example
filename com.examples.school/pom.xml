@@ -21,7 +21,6 @@
     <mongo.java.server.version>1.24.0</mongo.java.server.version>
     <testcontainers.version>1.12.5</testcontainers.version>
     <picocli.version>3.9.3</picocli.version>
-    <cucumber.version>4.2.2</cucumber.version>
   </properties>
 
   <dependencies>
@@ -79,18 +78,6 @@
       <version>${testcontainers.version}</version>
       <scope>test</scope>
     </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-java</artifactId>
-      <version>${cucumber.version}</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>io.cucumber</groupId>
-      <artifactId>cucumber-junit</artifactId>
-      <version>${cucumber.version}</version>
-      <scope>test</scope>
-    </dependency>
   </dependencies>
 
   <build>
@@ -110,22 +97,7 @@
               <sources>
                 <source>src/it/java</source>
                 <source>src/e2e/java</source>
-                <source>src/bdd/java</source>
               </sources>
-            </configuration>
-          </execution>
-          <execution>
-            <id>add-test-resource</id>
-            <phase>generate-test-resources</phase>
-            <goals>
-              <goal>add-test-resource</goal>
-            </goals>
-            <configuration>
-              <resources>
-                <resource>
-                  <directory>src/bdd/resources</directory>
-                </resource>
-              </resources>
             </configuration>
           </execution>
         </executions>
@@ -154,21 +126,6 @@
               </excludes>
               <includes>
                 <include>**/*E2E.java</include>
-              </includes>
-            </configuration>
-          </execution>
-          <execution>
-            <id>bdd-tests</id>
-            <goals>
-              <goal>integration-test</goal>
-              <goal>verify</goal>
-            </goals>
-            <configuration>
-              <excludes>
-                <exclude>**/*IT.java</exclude>
-              </excludes>
-              <includes>
-                <include>**/*BDD.java</include>
               </includes>
             </configuration>
           </execution>
