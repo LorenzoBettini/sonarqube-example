@@ -25,7 +25,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.model.Filters;
 
 @RunWith(GUITestRunner.class)
-public class SchoolSwingAppE2E extends AssertJSwingJUnitTestCase {
+public class SchoolSwingAppE2E extends AssertJSwingJUnitTestCase { // NOSONAR (doesn't match regular expression for testcase's name)
 
 	@SuppressWarnings("rawtypes")
 	@ClassRule
