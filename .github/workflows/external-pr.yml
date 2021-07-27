@@ -4,8 +4,10 @@ name: Analysis on external pull request
 # access to secrets
 on:
   workflow_run:
-    workflows: ["Java CI with Maven"]
-    branches: '**'
+    workflows:
+      - "Maven"
+    branches:
+      - '**'
     types:
       - completed
 
