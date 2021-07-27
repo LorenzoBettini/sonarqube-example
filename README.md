@@ -15,3 +15,5 @@ An example of Chapter _Code Quality_ of the book
 by _Lorenzo Bettini_.
 
 See https://github.com/LorenzoBettini/tdd-buildautomation-ci-book-examples for the list of all the examples.
+
+Just a change
