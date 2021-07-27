@@ -45,4 +45,4 @@ jobs:
       with:
         name: pr
         path: ./
-      if: ! ${{ env.SONAR_TOKEN }}
+      if: ${{ env.SONAR_TOKEN == '' }}
