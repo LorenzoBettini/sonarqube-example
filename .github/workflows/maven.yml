@@ -6,6 +6,8 @@ on:
 
 jobs:
   build:
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
     runs-on: ubuntu-latest
 
     steps:
@@ -25,9 +27,13 @@ jobs:
           ~/.sonar/cache
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml') }}
         restore-keys: ${{ runner.os }}-m2-
+    - name: Set Maven Additional Goals
+      run: |
+        echo "SONARGOAL=sonar:sonar" >> $GITHUB_ENV
+      if: ${{ env.SONAR_TOKEN }}
     - name: Build with Maven and SonarCloud
       run: >
-        xvfb-run mvn verify -Pjacoco sonar:sonar
+        xvfb-run mvn verify -Pjacoco $SONARGOAL
         -Dsonar.organization=lorenzobettini-github
         -Dsonar.host.url=https://sonarcloud.io
       working-directory: com.examples.school
