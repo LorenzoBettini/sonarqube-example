@@ -5,6 +5,7 @@ name: Analysis on external pull request
 on:
   workflow_run:
     workflows: ["Java CI with Maven, Docker and SonarCloud in Linux"]
+    branches: '**'
     types:
       - completed
 
