@@ -33,7 +33,7 @@ jobs:
       if: ${{ env.SONAR_TOKEN }}
     - name: Build with Maven and SonarCloud
       run: >
-        xvfb-run mvn verify -Pjacoco $SONARGOAL
+        xvfb-run mvn test -Pjacoco $SONARGOAL
         -Dsonar.organization=lorenzobettini-github
         -Dsonar.host.url=https://sonarcloud.io
       working-directory: com.examples.school
