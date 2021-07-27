@@ -1,4 +1,4 @@
-name: Java CI with Maven, Docker and SonarCloud in Linux
+name: Java CI with Maven
 
 on:
   push:
