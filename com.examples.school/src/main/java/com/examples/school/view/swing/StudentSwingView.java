@@ -19,6 +19,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
+import javax.swing.WindowConstants;
 import javax.swing.border.EmptyBorder;
 
 import com.examples.school.controller.SchoolController;
@@ -55,7 +56,7 @@ public class StudentSwingView extends JFrame implements StudentView {
 	 */
 	public StudentSwingView() {
 		setTitle("Student View");
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
