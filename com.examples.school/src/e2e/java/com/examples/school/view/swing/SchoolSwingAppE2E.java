@@ -25,7 +25,8 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.model.Filters;
 
 @RunWith(GUITestRunner.class)
-public class SchoolSwingAppE2E extends AssertJSwingJUnitTestCase {
+public class SchoolSwingAppE2E // NOSONAR we want the name this way
+	extends AssertJSwingJUnitTestCase {
 
 	@ClassRule
 	public static final MongoDBContainer mongo =
