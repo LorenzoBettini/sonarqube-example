@@ -1,0 +1,43 @@
+name: Java CI with Maven, Docker and SonarCloud in Linux
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  build:
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+      with:
+        # Shallow clones should be disabled for a better relevancy of SonarQube analysis
+        fetch-depth: 0
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        java-version: 17
+        distribution: 'temurin'
+    - name: Cache Maven packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          ~/.m2
+          ~/.sonar/cache
+        key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml', '**/*.yml') }}
+        restore-keys: ${{ runner.os }}-m2-
+    - name: Set Maven Additional Goals
+      run: |
+        echo "SONARGOAL=sonar:sonar" >> $GITHUB_ENV
+      if: ${{ env.SONAR_TOKEN }}
+    - name: Build with Maven and SonarCloud
+      run: >
+        xvfb-run mvn verify -Pjacoco $SONARGOAL
+        -Dsonar.organization=lorenzobettini-github
+        -Dsonar.host.url=https://sonarcloud.io
+        -Dsonar.projectKey=LorenzoBettini_sonarqube-example
+      working-directory: com.examples.school
+      env:
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
