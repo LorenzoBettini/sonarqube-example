@@ -41,6 +41,13 @@
     <sonar.issue.ignore.multicriteria.e12.resourceKey>
       **/StudentSwingViewTest.java
     </sonar.issue.ignore.multicriteria.e12.resourceKey>
+
+    <sonar.tests>
+      ${project.basedir}/src/test/java,
+      ${project.basedir}/src/it/java,
+      ${project.basedir}/src/e2e/java
+    </sonar.tests>
+
   </properties>
 
   <dependencies>
