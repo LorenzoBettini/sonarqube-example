@@ -1,0 +1,23 @@
+version: 2
+updates:
+  - package-ecosystem: "maven"
+    directory: "/com.examples.school"
+    schedule:
+      interval: "daily"
+    open-pull-requests-limit: 10
+    ignore:
+      # recent versions incompatible with Java 8
+      - dependency-name: "ch.qos.logback:logback-classic"
+      - dependency-name: "de.bwaldvogel:mongo-java-server"
+      # Mockito 4 supports Java 8 and above. Mockito 5 requires Java 11
+      - dependency-name: "org.mockito:*"
+        versions: [">=5.0.0"]
+    groups:
+      # update official Maven plugins in a single pull request
+      maven-plugin-updates:
+        patterns:
+          - "org.apache.maven.plugins:*"
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
