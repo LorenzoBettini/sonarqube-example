@@ -21,6 +21,9 @@
     <mongo.java.server.version>1.39.0</mongo.java.server.version>
     <testcontainers.version>1.21.0</testcontainers.version>
     <picocli.version>4.7.7</picocli.version>
+
+    <!-- In sonar-maven-plugin 5.0.0.4389, the default URL is not localhost anymore -->
+    <sonar.host.url>http://localhost:9000</sonar.host.url>
   </properties>
 
   <dependencies>
@@ -79,6 +82,15 @@
   </dependencies>
 
   <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.sonarsource.scanner.maven</groupId>
+          <artifactId>sonar-maven-plugin</artifactId>
+          <version>5.1.0.4751</version>
+        </plugin>
+      </plugins>
+    </pluginManagement>
     <plugins>
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
