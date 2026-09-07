@@ -179,7 +179,7 @@ public class StudentSwingView extends JFrame implements StudentView {
 
 	@Override
 	public void showAllStudents(List<Student> students) {
-		students.stream().forEach(listStudentsModel::addElement);
+		students.forEach(listStudentsModel::addElement);
 	}
 
 	@Override
